@@ -1,2 +1,2 @@
 const movie = require('./movie.js')
-module.exports = {movie};
+module.exports = { movie: movie.Movie }

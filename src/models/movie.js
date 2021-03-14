@@ -1,10 +1,8 @@
-const movie = {
+const Model = require('./model')
 
-    const findAll = params => {
-        return "blablabla"
+class Movie extends Model {
+    constructor() {
+        super();
     }
-
-    return {findAll}
 }
-
-module.exports = {movie};
+module.exports = { Movie };

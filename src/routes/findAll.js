@@ -6,8 +6,8 @@ const models = require('../models/index.js')
 const router = express.Router();
 
 //localhost:3000/api/movies/findAll/?&genres=a&genres=v&duration=0
-router.get('/api/movies/findAll/:duration?/:genres?', validateQuery('genres'),  (req, res) => {
-    
+router.get('/api/movies/findAll/:duration?/:genres?', validateQuery('genres'), (req, res) => {
+
     let params;
     if (req.query.duration) {
         params["duration"] = req.query.duration;
@@ -17,9 +17,10 @@ router.get('/api/movies/findAll/:duration?/:genres?', validateQuery('genres'),  
         params["genres"] = req.query.genres;
     }
 
-    const movies = await models.movie.findAll(params)
+    let instance = new models.movie()
+    const movies = instance.findAll()
 
-    res.send('Find All')
+    res.status(200).json(movies)
 
 })
 
