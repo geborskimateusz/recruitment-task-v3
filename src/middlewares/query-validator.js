@@ -4,9 +4,8 @@ const { ValidationError } = require('../errors/validation-error')
 function validateQuery(...fields) {
 
     return (req, res, next) => {
-        console.log("in middleware")
         for (const field of fields) {
-            if (req.query[field]) { // Field isn't present, end request
+            if (req.query[field]) { 
                 try {
                     let param = req.query[field];
                     switch (field) {
@@ -15,7 +14,6 @@ function validateQuery(...fields) {
                             break;
                     }
                 } catch (err) {
-                    console.log("err")
                     return res.status(401).json(err.message)
                 }
             }
@@ -26,29 +24,7 @@ function validateQuery(...fields) {
     };
 }
 
-const GENRE_CACHE = [
-    "Comedy",
-    "Fantasy",
-    "Crime",
-    "Drama",
-    "Music",
-    "Adventure",
-    "History",
-    "Thriller",
-    "Animation",
-    "Family",
-    "Mystery",
-    "Biography",
-    "Action",
-    "Film-Noir",
-    "Romance",
-    "Sci-Fi",
-    "War",
-    "Western",
-    "Horror",
-    "Musical",
-    "Sport"]
-
+const GENRE_CACHE = [];
 const validateGenres = (genres) => {
     if (GENRE_CACHE.length === 0) {
         //initialize from db

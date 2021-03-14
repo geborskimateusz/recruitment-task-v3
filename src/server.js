@@ -1,5 +1,5 @@
 const express = require('express')
-const {json}  = require('body-parser')
+const { json } = require('body-parser')
 
 const routes = require('./routes/routes.js')
 
@@ -12,6 +12,8 @@ app.use(routes.findAllRouter);
 app.use(routes.createRouter);
 
 
-app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`)
-})
+const start = () => app.listen(PORT, () => { console.log(`Listening on port ${PORT}`) });
+
+module.exports = {
+  start
+}
