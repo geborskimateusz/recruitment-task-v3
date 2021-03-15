@@ -24,7 +24,30 @@ function validateQuery(...fields) {
     };
 }
 
-const GENRE_CACHE = [];
+const GENRE_CACHE = [
+    "Comedy",
+    "Fantasy",
+    "Crime",
+    "Drama",
+    "Music",
+    "Adventure",
+    "History",
+    "Thriller",
+    "Animation",
+    "Family",
+    "Mystery",
+    "Biography",
+    "Action",
+    "Film-Noir",
+    "Romance",
+    "Sci-Fi",
+    "War",
+    "Western",
+    "Horror",
+    "Musical",
+    "Sport"
+];
+
 const validateGenres = (genres) => {
     if (GENRE_CACHE.length === 0) {
         //initialize from db

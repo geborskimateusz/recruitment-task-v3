@@ -1,4 +1,5 @@
-const express = require('express')
+const express = require('express');
+const { param } = require('express-validator');
 const { validateQuery } = require('../middlewares/query-validator')
 const models = require('../models/index.js')
 
@@ -8,7 +9,7 @@ const router = express.Router();
 //localhost:3000/api/movies/findAll/?&genres=a&genres=v&duration=0
 router.get('/api/movies/findAll/:duration?/:genres?', validateQuery('genres'), (req, res) => {
 
-    let params;
+    let params = {};
     if (req.query.duration) {
         params["duration"] = req.query.duration;
     }
@@ -17,9 +18,7 @@ router.get('/api/movies/findAll/:duration?/:genres?', validateQuery('genres'), (
         params["genres"] = req.query.genres;
     }
 
-    let instance = new models.movie()
-    const movies = instance.findAll()
-
+    const movies = models.movie.findAll(params)
     res.status(200).json(movies)
 
 })

@@ -1,2 +1,3 @@
-const movie = require('./movie.js')
-module.exports = { movie: movie.Movie }
+const { Movie } = require('./movie.js')
+
+module.exports = { movie: new Movie() }
