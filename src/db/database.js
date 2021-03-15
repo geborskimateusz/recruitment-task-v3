@@ -7,43 +7,38 @@ function database(schema) {
         "movies": []
     }
 
-    const findAll = (params) => {
-        // console.log(params, schema)
+    let findAll = (params) => {
 
-        //first check in cache then read file
 
         const rawdata = fs.readFileSync('data/db.json');
         const json = JSON.parse(rawdata);
-        const data = json[schema];
+        let queryData = json[schema];
 
-        let toReturn = data;
         if (params) {
-            toReturn = data.reduce((acc, el) => {
-                // let found = false;
-                for (param in params) {
-                    //         let values = params[param];
+        
+            queryData = queryData.reduce((acc, el) => {
+                let found = false;
+                for (let param in params) {
+                    let values = params[param];
 
-                    //         if (values instanceof Array) {
-                    //             let existIn = (arr, target) => target.every(v => arr.includes(v));
-                    //             found = existIn(el[param], values)
-                    //         } else {
-                    //             found = el[param] == values;
-                    //         }
+                    if (values instanceof Array) {
+                        found = el[param].includes(values)
+                    }
+                    else {
+                        found = el[param] == values;
+                    }
 
-                    //         if (found) {
-                    //             acc.push(el)
-                    //         }
+                    if (found) {
+                        acc.push(el)
+                    }
 
-                    return acc
                 }
+                return acc
             }, [])
         }
 
         // setCache(schema, result)
-
-        // console.log(ca:w
-        // che[schema].length, result.length)
-        return toReturn;
+        return queryData;
     }
 
     const setCache = (schema, result) => {
