@@ -7,11 +7,11 @@ const models = require('../models/index.js')
 const router = express.Router();
 
 //localhost:3000/api/movies/findAll/?&genres=a&genres=v&duration=0
-router.get('/api/movies/findAll/:duration?/:genres?', validateQuery('genres'), (req, res) => {
+router.get('/api/movies/findAll/:runtime?/:genres?', validateQuery('genres'), (req, res) => {
 
     let params = {};
-    if (req.query.duration) {
-        params["duration"] = req.query.duration;
+    if (req.query.runtime) {
+        params["runtime"] = req.query.runtime;
     }
 
     if (req.query.genres) {

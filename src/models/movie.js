@@ -1,4 +1,4 @@
-const {Model} = require('./model')
+const { Model } = require('./model')
 
 class Movie extends Model {
     constructor() {
@@ -6,4 +6,4 @@ class Movie extends Model {
         super(SCHEMA_TYPE);
     }
 }
-module.exports = { Movie };
+module.exports.Movie = new Movie() 

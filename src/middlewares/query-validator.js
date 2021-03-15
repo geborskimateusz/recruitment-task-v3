@@ -1,5 +1,6 @@
 //walidacja czy są takie genres 
 const { ValidationError } = require('../errors/validation-error')
+const models = require('../models/index.js')
 
 function validateQuery(...fields) {
 
@@ -24,37 +25,12 @@ function validateQuery(...fields) {
     };
 }
 
-const GENRE_CACHE = [
-    "Comedy",
-    "Fantasy",
-    "Crime",
-    "Drama",
-    "Music",
-    "Adventure",
-    "History",
-    "Thriller",
-    "Animation",
-    "Family",
-    "Mystery",
-    "Biography",
-    "Action",
-    "Film-Noir",
-    "Romance",
-    "Sci-Fi",
-    "War",
-    "Western",
-    "Horror",
-    "Musical",
-    "Sport"
-];
 
 const validateGenres = (genres) => {
-    if (GENRE_CACHE.length === 0) {
-        //initialize from db
-    }
+    const fromDB = models.genre.findAll()
 
     const validationArr = genres.reduce((acc, e) => {
-        if (!GENRE_CACHE.includes(e)) {
+        if (!fromDB.includes(e)) {
             console.log("Does not include ", e)
             acc.push(e)
         }
@@ -62,7 +38,6 @@ const validateGenres = (genres) => {
     }, [])
 
     if (validationArr.length !== 0) {
-        console.log("err")
         throw new ValidationError(`Missing genres ${validationArr}`);
     }
 
