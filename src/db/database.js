@@ -1,60 +1,97 @@
 const { param } = require('express-validator');
 const fs = require('fs')
+const hash = require('../util/hash')
+
+let cache = {
+    "genres": [],
+    "movies": {},
+    "queries": {}
+}
 
 function database(schema) {
-    let cache = {
-        "genres": [],
-        "movies": []
-    }
 
-    let findAll = (params) => {
+    let findAll = (filterParams) => {
 
+        if (filterParams) {
+            const key = hash().toHash(filterParams);
 
-        const rawdata = fs.readFileSync('data/db.json');
-        const json = JSON.parse(rawdata);
-        let queryData = json[schema];
+            if (cache['queries'][key]) {
+                const movieIds = cache['queries'][key];
+                return movieIds.map(id => cache['movies'][id]);
+            } else {
+                return readFromFile(filterParams)
+            }
 
-        if (params) {
-        
-            queryData = queryData.reduce((acc, el) => {
-                let found = false;
-                for (let param in params) {
-                    let values = params[param];
-
-                    if (values instanceof Array) {
-                        found = el[param].includes(values)
-                    }
-                    else {
-                        found = el[param] == values;
-                    }
-
-                    if (found) {
-                        acc.push(el)
-                    }
-
-                }
-                return acc
-            }, [])
+        } else {
+            return readFromFile()
         }
 
-        // setCache(schema, result)
-        return queryData;
+
     }
 
-    const setCache = (schema, result) => {
+
+
+    const setCache = (schema, result, filterParams) => {
         switch (schema) {
             case 'genres':
                 cache[schema] = result;
                 break;
             case 'movies':
-                result.forEach(movie => {
+                const ids = result.map(movie => {
                     cache[schema][movie.id] = movie;
+                    return movie.id;
                 });
+
+                if (filterParams) {
+                    const key = hash().toHash(filterParams)
+                    cache['queries'][key] = ids;
+                }
                 break;
         }
     }
 
+    const readFile = () => {
+        const rawdata = fs.readFileSync('data/db.json');
+        return JSON.parse(rawdata);
+    }
+
+    const readFromFile = filterParams => {
+        const data = readFile();
+        let queryData = data[schema];
+
+        if (filterParams) {
+            queryData = filterData(queryData, filterParams)
+        }
+
+        setCache(schema, queryData, filterParams)
+        return queryData;
+    }
+
+    const filterData = (data, filter) => {
+        return data.reduce((acc, el) => {
+            let found = false;
+            for (let param in filter) {
+                let values = filter[param];
+
+                if (values instanceof Array) {
+                    found = el[param].includes(values)
+                } else {
+                    found = el[param] == values;
+                }
+
+                if (found) {
+                    acc.push(el)
+                }
+            }
+            return acc
+        }, [])
+    }
+
+
+
     return { findAll }
+
+
 
 }
 

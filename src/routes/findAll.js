@@ -2,11 +2,11 @@ const express = require('express');
 const { param } = require('express-validator');
 const { validateQuery } = require('../middlewares/query-validator')
 const models = require('../models/index.js')
+const http = require('../util/http')
 
 
 const router = express.Router();
 
-//localhost:3000/api/movies/findAll/?&genres=a&genres=v&duration=0
 router.get('/api/movies/findAll/:runtime?/:genres?', validateQuery('genres'), (req, res) => {
 
     let params = {};
@@ -15,8 +15,10 @@ router.get('/api/movies/findAll/:runtime?/:genres?', validateQuery('genres'), (r
     }
 
     if (req.query.genres) {
-        params["genres"] = req.query.genres;
+        params["genres"] = http().queryAsArray(req.query.genres);
     }
+
+    console.log(params)
 
     const movies = models.movie.findAll(params)
     res.status(200).json(movies)

@@ -1,6 +1,7 @@
 //walidacja czy są takie genres 
 const { ValidationError } = require('../errors/validation-error')
 const models = require('../models/index.js')
+const http = require('../util/http')
 
 function validateQuery(...fields) {
 
@@ -11,6 +12,7 @@ function validateQuery(...fields) {
                     let param = req.query[field];
                     switch (field) {
                         case 'genres':
+                            param = http().queryAsArray(param);
                             validateGenres(param)
                             break;
                     }
