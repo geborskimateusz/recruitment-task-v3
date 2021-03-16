@@ -4,7 +4,11 @@ class Model {
 
     constructor(schema) {
         this.schema = schema;
-        this.findAll = (params) => database(this.schema).findAll(params)
+
+        const db = database(this.schema);
+        this.find = (params) => db.find(params);
+        this.findAny = () => db.findAny();
+
     }
 }
 

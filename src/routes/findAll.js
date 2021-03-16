@@ -8,9 +8,9 @@ const router = express.Router();
 
 router.get('/api/movies/findAll/:runtime?/:genres?', validateQuery('genres'), (req, res) => {
 
-    let params;
+    let movies = [];
     if (http.containsParams(req.query)) {
-        params = {};
+        let params = {};
         if (req.query.runtime) {
             params["runtime"] = req.query.runtime;
         }
@@ -18,9 +18,12 @@ router.get('/api/movies/findAll/:runtime?/:genres?', validateQuery('genres'), (r
         if (req.query.genres) {
             params["genres"] = http.paramAsArray(req.query.genres);
         }
+        movies = movie.find(params);
+    } else {
+        movies = [movie.findAny()];
     }
 
-    const movies = movie.findAll(params)
+
     res.status(200).json(movies)
 
 })

@@ -4,25 +4,29 @@ const cache = require('./cache')
 
 function database(schema) {
 
-    const findAll = (filterParams) => {
+    const find = (filterParams) => {
 
-        switch(schema) {
+        switch (schema) {
             case 'movies':
-                if (filterParams) {
-                    const key = hash.toHash(filterParams);
-                    return cache.getCache()['queries'][key] ? cache.readFromQueryCache(key) : readFromFile(filterParams);
-                } else {
-                    return readFromFile()
-                }
+                const key = hash.toHash(filterParams);
+                return cache.getCache()['queries'][key] ? cache.readFromQueryCache(key) : readFromFile(filterParams);
             case 'genres':
                 return cache.getCache()['genres'].length !== 0 ? cache.getCache()['genres'] : readFromFile()
         }
-
     }
+
+    const findAny = () => readAny();
 
     const readFile = () => {
         const rawdata = fs.readFileSync('data/db.json');
         return JSON.parse(rawdata);
+    }
+
+    const readAny = () => {
+        const data = readFile();
+        const movies = data['movies'];
+        console.log(movies[0])
+        return movies[Math.floor(Math.random() * movies.length - 1)]
     }
 
     const readFromFile = filterParams => {
@@ -61,7 +65,7 @@ function database(schema) {
 
 
 
-    return { findAll }
+    return { find, findAny }
 }
 
 module.exports = database;

@@ -26,7 +26,7 @@ function validateQuery(...fields) {
 
 
 const validateGenres = (genres) => {
-    const fromDB = genre.findAll()
+    const fromDB = genre.find()
 
     const validationArr = genres.reduce((acc, e) => {
         if (!fromDB.includes(e)) {
