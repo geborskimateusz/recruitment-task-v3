@@ -9,4 +9,4 @@ function hash() {
 
 }
 
-module.exports = hash;
+module.exports = hash();

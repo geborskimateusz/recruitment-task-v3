@@ -1,4 +1,4 @@
-const { Model } = require('./model')
+const { Model } = require('../db/model')
 
 class Genre extends Model {
     constructor() {
@@ -6,4 +6,4 @@ class Genre extends Model {
         super(SCHEMA_TYPE);
     }
 }
-module.exports.Genre = new Genre() 
+module.exports = { genre: new Genre() } 

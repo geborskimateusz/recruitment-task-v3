@@ -1,54 +1,23 @@
-const { param } = require('express-validator');
 const fs = require('fs')
 const hash = require('../util/hash')
-
-let cache = {
-    "genres": [],
-    "movies": {},
-    "queries": {}
-}
+const cache = require('./cache')
 
 function database(schema) {
 
-    let findAll = (filterParams) => {
+    const findAll = (filterParams) => {
 
-        if (filterParams) {
-            const key = hash().toHash(filterParams);
-
-            if (cache['queries'][key]) {
-                const movieIds = cache['queries'][key];
-                return movieIds.map(id => cache['movies'][id]);
-            } else {
-                return readFromFile(filterParams)
-            }
-
-        } else {
-            console.log("Read from file")
-            return readFromFile()
-        }
-
-
-    }
-
-
-
-    const setCache = (schema, result, filterParams) => {
-        switch (schema) {
-            case 'genres':
-                cache[schema] = result;
-                break;
+        switch(schema) {
             case 'movies':
-                const ids = result.map(movie => {
-                    cache[schema][movie.id] = movie;
-                    return movie.id;
-                });
-
                 if (filterParams) {
-                    const key = hash().toHash(filterParams)
-                    cache['queries'][key] = ids;
+                    const key = hash.toHash(filterParams);
+                    return cache.getCache()['queries'][key] ? cache.readFromQueryCache(key) : readFromFile(filterParams);
+                } else {
+                    return readFromFile()
                 }
-                break;
+            case 'genres':
+                return cache.getCache()['genres'].length !== 0 ? cache.getCache()['genres'] : readFromFile()
         }
+
     }
 
     const readFile = () => {
@@ -64,7 +33,7 @@ function database(schema) {
             queryData = filterData(queryData, filterParams)
         }
 
-        setCache(schema, queryData, filterParams)
+        cache.setCache(schema, queryData, filterParams)
         return queryData;
     }
 
@@ -75,8 +44,6 @@ function database(schema) {
                 let values = filter[param];
 
                 if (values instanceof Array) {
-                    console.log(el[param], values)
-
                     found = values.every(data => el[param].includes(data))
                 } else {
                     found = el[param] == values;
@@ -95,9 +62,6 @@ function database(schema) {
 
 
     return { findAll }
-
-
-
 }
 
 module.exports = database;

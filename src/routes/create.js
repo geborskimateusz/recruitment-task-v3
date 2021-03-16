@@ -6,4 +6,4 @@ router.get('/api/movies/', (req, res) => {
     res.send('Create')
 })
 
-module.exports = {router}
+module.exports = { createRouter: router }

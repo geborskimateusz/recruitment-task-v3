@@ -8,4 +8,4 @@ class Model {
     }
 }
 
-module.exports.Model = Model 
+module.exports = { Model } 
