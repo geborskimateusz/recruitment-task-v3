@@ -23,6 +23,7 @@ function database(schema) {
             }
 
         } else {
+            console.log("Read from file")
             return readFromFile()
         }
 
@@ -74,15 +75,19 @@ function database(schema) {
                 let values = filter[param];
 
                 if (values instanceof Array) {
-                    found = el[param].includes(values)
+                    console.log(el[param], values)
+
+                    found = values.every(data => el[param].includes(data))
                 } else {
                     found = el[param] == values;
                 }
 
-                if (found) {
-                    acc.push(el)
+                if (!found) {
+                    return acc;
                 }
             }
+
+            acc.push(el)
             return acc
         }, [])
     }
