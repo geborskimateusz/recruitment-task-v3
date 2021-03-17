@@ -1,6 +1,5 @@
-const { ValidationError } = require('../errors/validation-error')
-const { genre } = require('../models/genre')
 const http = require('../util/http')
+const { validateGenres  } = require('./schema-validator')
 
 function validateQuery(...fields) {
 
@@ -22,23 +21,6 @@ function validateQuery(...fields) {
         }
         next()
     };
-}
-
-
-const validateGenres = (genres) => {
-    const fromDB = genre.find()
-
-    const validationArr = genres.reduce((acc, e) => {
-        if (!fromDB.includes(e)) {
-            acc.push(e)
-        }
-        return acc
-    }, [])
-
-    if (validationArr.length !== 0) {
-        throw new ValidationError(`Missing genres ${validationArr}`);
-    }
-
 }
 
 module.exports = { validateQuery }

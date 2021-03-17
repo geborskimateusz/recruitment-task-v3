@@ -4,10 +4,9 @@ class Model {
 
     constructor(schema) {
         this.schema = schema;
-
-        const db = database(this.schema);
-        this.find = (params) => db.find(params);
-        this.findAny = () => db.findAny();
+        this.db = database(this.schema);
+        this.find = (params) => this.db.find(params);
+        this.findAny = () => this.db.findAny();
 
     }
 }
