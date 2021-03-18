@@ -20,13 +20,13 @@ const createMovie = Joi.object({
             })
             return errors;
         }),
-    // title: Joi.string().max(255).required(),
-    // year: Joi.number().required(),
-    // runtime: Joi.number().required(),
-    // director: Joi.string().max(255).required(),
-    // actors: Joi.string(),
-    // plot: Joi.string(),
-    // posterUrl: Joi.string()
+    title: Joi.string().max(255).required(),
+    year: Joi.number().required(),
+    runtime: Joi.number().required(),
+    director: Joi.string().max(255).required(),
+    actors: Joi.string(),
+    plot: Joi.string(),
+    posterUrl: Joi.string()
 
 }).strict();
 

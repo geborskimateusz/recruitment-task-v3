@@ -1,5 +1,5 @@
 const express = require('express')
-const { validateMovieSchema } = require('../middlewares/schema-validator')
+const { validateMovieSchema } = require('../middlewares/movie-validator')
 const { movie } = require('../models/movie')
 
 const router = express.Router();

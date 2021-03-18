@@ -1,6 +1,5 @@
 const { ValidationError } = require('../errors/validation-error')
 const { genre } = require('../models/genre')
-const { createMovie } = require('../schemas/movie')
 
 const validateGenres = (genres) => {
     const fromDB = genre.find()
@@ -18,15 +17,6 @@ const validateGenres = (genres) => {
     return genres;
 }
 
-const validateMovieSchema = () => {
 
-    return (req, res, next) => {
-        const result = createMovie.validate(req.body);
-        if (result.error) {
-            return res.status(400).send(result)
-        }
-        next()
-    };
-}
 
-module.exports = { validateGenres, validateMovieSchema }
+module.exports = { validateGenres }
