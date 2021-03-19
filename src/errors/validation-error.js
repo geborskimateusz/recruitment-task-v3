@@ -1,7 +1,10 @@
-class ValidationError extends Error {
-  constructor(message) {
-    super(message);
-  }
-}
+const {CustomError} = require('./custom-error');
 
-module.exports = {ValidationError}
+class ValidationError extends CustomError {
+    constructor(message) {
+      const statusCode = 400;
+      super(statusCode, message);
+    }
+  }
+  
+  module.exports = {ValidationError}
