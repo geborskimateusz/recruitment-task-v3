@@ -62,7 +62,7 @@ function database(schema) {
 
         if (filterParams) {
             if (Object.keys(filterParams).length === 1 && filterParams['genres']) {
-                queryData.sort((a, b) => (a.genres.length > b.genres.length) ? -1 : 1)
+                queryData = sortByGenresAccuracy(queryData, filterParams['genres'])
             }
         }
 
@@ -94,6 +94,19 @@ function database(schema) {
             return acc
         }, [])
     }
+
+    // If we send a request with genres [Comedy, Fantasy, Crime]
+    // then the top hits should be movies that have all three of them, then there should be movies
+    // that have one of [Comedy, Fantasy], [comedy, crime], [Fantasy, Crime]
+    // and then those with Comedy only, Fantasy only and Crime only.
+    const sortByGenresAccuracy = (data, filter)=> data
+        .reduce((acc, movie, index) => {
+            const filteredArray = movie.genres.filter(value => filter.includes(value))
+            acc.push({ index, genres: filteredArray });
+            return acc;
+        }, [], 0)
+        .sort((a, b) => (a.genres.length > b.genres.length) ? -1 : 1)
+        .map(sortedArr => data[sortedArr.index]);
 
 
 
