@@ -11,8 +11,12 @@ function database(schema) {
 
         switch (schema) {
             case 'movies':
-                const key = hash.toHash(filterParams);
-                return cache.getCache()['queries'][key] ? cache.readFromQueryCache(key) : readFromFile(filterParams, true);
+                if (Object.keys(filterParams).length > 1) {
+                    const key = hash.toHash(filterParams);
+                    return cache.getCache()['queries'][key] ? cache.readFromQueryCache(key) : readFromFile(filterParams, true);
+                } else {
+                    return readFromFile(filterParams, false)
+                }
             case 'genres':
                 return cache.getCache()['genres'].length !== 0 ? cache.getCache()['genres'] : readFromFile()
         }
@@ -44,7 +48,7 @@ function database(schema) {
     }
 
     const readAny = () => {
-        const movies = readFromFile()
+        const movies = readFromFile();
         return movies[Math.floor(Math.random() * movies.length - 1)]
     }
 
@@ -54,6 +58,12 @@ function database(schema) {
 
         if (filterParams) {
             queryData = filterData(queryData, filterParams)
+        }
+
+        if (filterParams) {
+            if (Object.keys(filterParams).length === 1 && filterParams['genres']) {
+                queryData.sort((a, b) => (a.genres.length > b.genres.length) ? -1 : 1)
+            }
         }
 
         if (shouldCache) {
@@ -70,9 +80,9 @@ function database(schema) {
                 let values = filter[param];
 
                 if (values instanceof Array) {
-                    found = values.every(data => el[param].includes(data))
+                    found = values.some(data => el[param].includes(data))
                 } else {
-                    found = el[param] == values;
+                    found = el[param] >= parseInt(values) - 10 && el[param] <= parseInt(values) + 10;
                 }
 
                 if (!found) {
