@@ -1,3 +1,4 @@
+
 const express = require('express')
 const { validateMovieSchema } = require('../middlewares/movie-validator')
 const { movie } = require('../models/movie')

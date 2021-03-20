@@ -1,0 +1,85 @@
+swagger: "2.0"
+info:
+  description: "The Software House - Node.js Developer recruitment task"
+  version: "1.0.0"
+  title: "Node.js Developer recruitment task API"
+basePath: "/api"
+tags:
+- name: "movies"
+schemes:
+- "http"
+paths:
+  /movies:
+    post:
+      tags:
+      - "movies"
+      summary: "Add a new movie"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Movie object that needs to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/Movie"
+      responses:
+        "400":
+          description: "Bad Request"
+        "201":
+          description: "Created"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Movie"
+  /movies/findAll/:
+    get:
+      tags:
+      - "movies"
+      summary: "Find movies by query parameters"
+      description: "Runtime and multiple genres values can be provided. If not random movie is returned.\nExample: /api/movies/findAll/?runtime=120&genres=Comedy&genres=Fantasy"
+      produces:
+      - "application/json"
+      parameters:
+      - in: query
+        name: runtime
+        description: The number that represents movie runtime
+        type: number
+      - in: query
+        name: genres
+        description: Multiple genres can be added separated by &
+        type: number
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Movie"
+        "400":
+          description: "Invalid status value"
+definitions:
+  Movie:
+    type: "object"
+    properties:
+      title:
+        type: "string"
+      year:
+        type: "number"
+      runtime:
+        type: "number"
+      genres:
+        type: "array"
+        items:
+          type: "string"
+      director:
+        type: "string"   
+      actors:
+        type: "string"  
+      plot:
+        type: "string"  
+      posterUrl:
+        type: "string"  
