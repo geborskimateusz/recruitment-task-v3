@@ -8,9 +8,10 @@ const FILE_PATH = 'data/db.json';
 function database(schema) {
 
     const find = (filterParams) => {
-
         switch (schema) {
             case 'movies':
+
+                // if both query paramters were supplied you can try to read from in memory cache that holds latest queries
                 if (Object.keys(filterParams).length > 1) {
                     const key = hash.toHash(filterParams);
                     return cache.getCache()['queries'][key] ? cache.readFromQueryCache(key) : readFromFile(filterParams, true);
@@ -60,6 +61,7 @@ function database(schema) {
             queryData = filterData(queryData, filterParams)
         }
 
+        //If we provide only genres parameter or If we provide both duration and genres parameter,
         if (filterParams) {
             if (Object.keys(filterParams).length === 1 && filterParams['genres'] || Object.keys(filterParams).length > 1) {
                 queryData = sortByGenresAccuracy(queryData, filterParams['genres'])
@@ -73,6 +75,12 @@ function database(schema) {
         return queryData;
     }
 
+    // Iterate over filter 
+    // For example:
+    // {
+    //   runtime: 120,
+    //   genres: ["Comedy", "Drama"]   
+    // }
     const filterData = (data, filter) => {
         return data.reduce((acc, el) => {
             let found = false;

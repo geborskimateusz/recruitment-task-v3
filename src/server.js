@@ -6,9 +6,8 @@ const YAML = require("yamljs")
 const { findAllRouter } = require('./routes/findAll');
 const { createRouter } = require('./routes/create');
 const { errorHandler } = require('./middlewares/error-handler');
-const { NotFoundError } = require('./errors/not-found-error');
 
-const swaggerDocument = YAML.load('src/swagger/swagger.yaml');
+const swaggerDocument = YAML.load('swagger.yaml');
 
 const PORT = parseInt(process.env.PORT, 10) || 3000;
 

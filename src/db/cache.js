@@ -1,5 +1,14 @@
 const hash = require('../util/hash')
 
+// In memory structure that holds queries that has been requested.
+// It is used only when both genres and runtime query parameters were written.
+// For example if there was a query like: 
+// 
+// api/movies/findAll/?runtime=90&genres=Comedy&genres=Fantasy
+//
+// It is hashed as a string and pushed into both queries and movies objects.
+// First you need to check if such query exist in queries map. 
+// Then if exist you will look into movies where result of query is mapped to generated hash
 let memcache = {
     "genres": [],
     "movies": {},

@@ -1,5 +1,6 @@
 const database = require('../db/database');
 
+// Model defines a base programming interface for interacting with the database.
 class Model {
 
     constructor(schema) {
@@ -7,7 +8,6 @@ class Model {
         this.db = database(this.schema);
         this.find = (params) => this.db.find(params);
         this.findAny = () => this.db.findAny();
-
     }
 }
 

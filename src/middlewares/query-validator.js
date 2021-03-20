@@ -1,6 +1,7 @@
 const http = require('../util/http')
 const { validateGenres } = require('./schema-validator')
 
+// Validate query parameters from incoming request. 
 function validateQuery(...fields) {
 
     return (req, res, next) => {
