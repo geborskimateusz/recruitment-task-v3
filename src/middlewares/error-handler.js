@@ -2,7 +2,6 @@ const {CustomError} = require('../errors/custom-error');
 
 function errorHandler(err, req, res, next) {
     if (err instanceof CustomError) {
-        console.log("alalalla")
         return res.status(err.statusCode).send({ errors: err.serializeErrors() });
       }
     

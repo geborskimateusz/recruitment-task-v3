@@ -21,8 +21,7 @@ app.use(createRouter);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.all('*', async (req, res) => {
-    console.log("not found")
-    throw new NotFoundError();
+    res.status(404).json({ "errors": [ { "message": "No such endpoint" } ] })
 });
 
 app.use(errorHandler);

@@ -61,7 +61,7 @@ function database(schema) {
         }
 
         if (filterParams) {
-            if (Object.keys(filterParams).length === 1 && filterParams['genres']) {
+            if (Object.keys(filterParams).length === 1 && filterParams['genres'] || Object.keys(filterParams).length > 1) {
                 queryData = sortByGenresAccuracy(queryData, filterParams['genres'])
             }
         }

@@ -3,7 +3,6 @@ const { validateGenres } = require('../middlewares/schema-validator')
 const createMovie = Joi.object({
     genres: Joi.array().items(Joi.string())
         .custom(genres => {
-            console.log("here1")
             validateGenres(genres);
             return genres
         })
