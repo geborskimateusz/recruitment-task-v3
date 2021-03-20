@@ -1,13 +1,14 @@
 const fs = require('fs')
 const hash = require('../util/hash')
 const cache = require('./cache')
+
 const { DatabaseError } = require('../errors/database-error')
 
 const FILE_PATH = 'data/db.json';
 
 function database(schema) {
 
-    const find = (filterParams) => {
+    const find = async (filterParams) => {
         switch (schema) {
             case 'movies':
 
@@ -19,27 +20,27 @@ function database(schema) {
                     return readFromFile(filterParams, false)
                 }
             case 'genres':
-                return cache.getCache()['genres'].length !== 0 ? cache.getCache()['genres'] : readFromFile()
+                return cache.getCache()['genres'].length !== 0 ? cache.getCache()['genres'] : await readFromFile()
         }
     }
 
-    const create = data => {
-        let json = readFile();
+    const create = async data => {
+        let json = await readFile();
         data = { id: json[schema].length + 1, ...data };
         json[schema].push(data);
-        writeToFile(json)
+        await writeToFile(json)
         return data;
     }
 
-    const findAny = () => readAny();
+    const findAny = async () => await readAny();
 
-    const readFile = () => {
-        const rawdata = fs.readFileSync(FILE_PATH);
+    const readFile = async () => {
+        const rawdata = await fs.promises.readFile(FILE_PATH);
         return JSON.parse(rawdata);
     }
 
-    const writeToFile = data => {
-        fs.writeFile(FILE_PATH, JSON.stringify(data, null, 2),
+    const writeToFile = async data => {
+        await fs.promises.writeFile(FILE_PATH, JSON.stringify(data, null, 2),
             err => {
                 if (err) {
                     console.error(err)
@@ -48,13 +49,13 @@ function database(schema) {
             });
     }
 
-    const readAny = () => {
-        const movies = readFromFile();
+    const readAny = async () => {
+        const movies = await readFromFile();
         return movies[Math.floor(Math.random() * movies.length - 1)]
     }
 
-    const readFromFile = (filterParams, shouldCache) => {
-        const data = readFile();
+    const readFromFile = async (filterParams, shouldCache) => {
+        const data = await readFile();
         let queryData = data[schema];
 
         if (filterParams) {
@@ -107,7 +108,7 @@ function database(schema) {
     // then the top hits should be movies that have all three of them, then there should be movies
     // that have one of [Comedy, Fantasy], [comedy, crime], [Fantasy, Crime]
     // and then those with Comedy only, Fantasy only and Crime only.
-    const sortByGenresAccuracy = (data, filter)=> data
+    const sortByGenresAccuracy = (data, filter) => data
         .reduce((acc, movie, index) => {
             const filteredArray = movie.genres.filter(value => filter.includes(value))
             acc.push({ index, genres: filteredArray });

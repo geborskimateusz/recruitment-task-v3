@@ -1,31 +1,34 @@
 const express = require('express');
-const { validateQuery } = require('../middlewares/query-validator')
+const { validateGenres } = require('../schemas/validation/schema-validator');
 const { movie } = require('../models/movie')
 const http = require('../util/http')
 
 
 const router = express.Router();
 
-router.get('/api/movies/findAll/:runtime?/:genres?', validateQuery('genres'), (req, res) => {
+router.get('/api/movies/findAll/:runtime?/:genres?', async (req, res, next) => {
 
-    let movies = [];
-    if (http.containsParams(req.query)) {
-        let params = {};
-        if (req.query.runtime) {
-            params["runtime"] = req.query.runtime;
-        }
+    try {
+        let movies = [];
+        if (http.containsParams(req.query)) {
+            let params = {};
+            if (req.query.runtime) {
+                params["runtime"] = req.query.runtime;
+            }
 
-        if (req.query.genres) {
-            params["genres"] = http.paramAsArray(req.query.genres);
+            if (req.query.genres) {
+                const genres = http.paramAsArray(req.query.genres);
+                params["genres"] = await validateGenres(genres);
+
+            }
+            movies = await movie.find(params);
+        } else {
+            movies = [await movie.findAny()];
         }
-        movies = movie.find(params);
-    } else {
-        movies = [movie.findAny()];
+        res.status(200).json(movies)
+    } catch (err) {
+        next(err);
     }
-
-
-    res.status(200).json(movies)
-
 })
 
 

@@ -1,9 +1,10 @@
 const Joi = require('joi');
-const { validateGenres } = require('../middlewares/schema-validator')
+const { validateGenres } = require('./validation/schema-validator')
 const createMovie = Joi.object({
     genres: Joi.array().items(Joi.string())
-        .custom(genres => {
-            validateGenres(genres);
+        .custom(async genres => {
+            console.log(genres)
+            await validateGenres(genres);
             return genres
         })
         .error(errors => {

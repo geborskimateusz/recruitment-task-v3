@@ -6,8 +6,8 @@ class Model {
     constructor(schema) {
         this.schema = schema;
         this.db = database(this.schema);
-        this.find = (params) => this.db.find(params);
-        this.findAny = () => this.db.findAny();
+        this.find = async (params) => await this.db.find(params);
+        this.findAny = async () => await this.db.findAny();
     }
 }
 

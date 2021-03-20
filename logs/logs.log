@@ -1,1 +1,28 @@
 {"message":{"statusCode":400,"messages":"Missing genres Fantasya"},"level":"error"}
+{"message":{"statusCode":400,"messages":["Invalid genre"]},"level":"error"}
+{"message":{"statusCode":400,"messages":["Invalid genre"]},"level":"error"}
+{"message":{"statusCode":400,"messages":["Invalid genre"]},"level":"error"}
+{"message":{"statusCode":400,"messages":["Invalid genre"]},"level":"error"}
+{"message":{"statusCode":400,"messages":["Invalid genre"]},"level":"error"}
+{"message":{"statusCode":400,"messages":["Invalid genre"]},"level":"error"}
+{"message":{},"level":"error"}
+{"message":{},"level":"error"}
+{"message":{},"level":"error"}
+{"message":{},"level":"error"}
+{"message":{"statusCode":400,"messages":"Missing genres GFantasy"},"level":"error"}
+{"message":{"statusCode":400,"messages":"Missing genres GFantasy"},"level":"error"}
+{"message":{},"level":"error"}
+{"message":{},"level":"error"}
+{"message":{"statusCode":400,"messages":["\"year\" must be a number"]},"level":"error"}
+{"message":{},"level":"error"}
+{"message":{},"level":"error"}
+{"message":{},"level":"error"}
+{"message":{},"level":"error"}
+{"message":{},"level":"error"}
+{"message":{},"level":"error"}
+{"message":{},"level":"error"}
+{"message":{},"level":"error"}
+{"message":{},"level":"error"}
+{"message":{},"level":"error"}
+{"message":{},"level":"error"}
+{"message":{},"level":"error"}

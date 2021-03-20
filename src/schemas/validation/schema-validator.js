@@ -1,8 +1,9 @@
-const { ValidationError } = require('../errors/validation-error')
-const { genre } = require('../models/genre')
+const { valid } = require('joi');
+const { ValidationError } = require('../../errors/validation-error')
+const { genre } = require('../../models/genre')
 
-const validateGenres = (genres) => {
-    const fromDB = genre.find()
+const validateGenres = async (genres) => {
+    const fromDB = await genre.find();  
     const validationArr = genres.reduce((acc, e) => {
         if (!fromDB.includes(e)) {
             acc.push(e)
