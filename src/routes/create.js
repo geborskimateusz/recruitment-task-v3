@@ -1,18 +1,12 @@
-
 const express = require('express')
-const { validateMovieSchema } = require('../schemas/validation/movie-validator')
 const { movie } = require('../models/movie')
+const { validateMovie } = require('../middlewares/body-validator')
 
 const router = express.Router();
 
-router.post('/api/movies/', async (req, res, next) => {
-    try {
-        await validateMovieSchema(req.body);
-        const movieCreated = await movie.create(req.body);
-        return res.status(201).json(movieCreated);
-    } catch (err) {
-        next(err);
-    }
+router.post('/api/movies/', validateMovie, async (req, res) => {
+    const movieCreated = await movie.create(req.body);
+    return res.status(201).json(movieCreated);
 })
 
 module.exports = { createRouter: router }

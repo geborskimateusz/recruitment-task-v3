@@ -6,6 +6,7 @@ const YAML = require("yamljs")
 const { findAllRouter } = require('./routes/findAll');
 const { createRouter } = require('./routes/create');
 const { errorHandler } = require('./middlewares/error-handler');
+const { NotFoundError } = require('./errors/not-found-error');
 
 const swaggerDocument = YAML.load('swagger.yaml');
 
@@ -19,8 +20,8 @@ app.use(createRouter);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-app.all('*', async (req, res) => {
-    res.status(404).json({ "errors": [ { "message": "No such endpoint" } ] })
+app.all('*', () => {
+    throw new NotFoundError();
 });
 
 app.use(errorHandler);

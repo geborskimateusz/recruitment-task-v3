@@ -40,7 +40,7 @@ paths:
       tags:
       - "movies"
       summary: "Find movies by query parameters"
-      description: "Runtime and multiple genres values can be provided. If not random movie is returned.\nExample: /api/movies/findAll/?runtime=120&genres=Comedy&genres=Fantasy"
+      description: 'Runtime and multiple genres values can be provided. If not random movie is returned.'
       produces:
       - "application/json"
       parameters:
@@ -51,7 +51,12 @@ paths:
       - in: query
         name: genres
         description: Multiple genres can be added separated by &
-        type: number
+        items:
+          type: string
+        collectionFormat: multi
+        x-example:
+        - genres=Comedy
+        - genres=Comedy&genres=Fantasy
       responses:
         "200":
           description: "successful operation"

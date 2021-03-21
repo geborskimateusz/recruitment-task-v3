@@ -26,3 +26,20 @@
 {"message":{},"level":"error"}
 {"message":{},"level":"error"}
 {"message":{},"level":"error"}
+{"message":{"statusCode":400,"messages":"Missing genres Fantasya"},"level":"error"}
+{"message":{"statusCode":400,"messages":"Missing genres Fantasya"},"level":"error"}
+{"message":{"statusCode":400,"messages":"Missing genres Fantasya"},"level":"error"}
+{"message":{"statusCode":400,"messages":"Missing genres Fantasya","message":" (genres)"},"level":"error"}
+{"message":{"statusCode":400,"messages":"Missing genres Fantasya","message":" (genres)"},"level":"error"}
+{"message":{"statusCode":400,"messages":"Missing genres Comedya","message":" (genres)"},"level":"error"}
+{"message":{"statusCode":404,"messages":"Route not found"},"level":"error"}
+{"message":{"statusCode":404,"messages":"Route not found"},"level":"error"}
+{"message":{"statusCode":400,"messages":"Missing genres Comdy"},"level":"error"}
+{"message":{"statusCode":400,"messages":"Missing genres Comedy,Fantasy"},"level":"error"}
+{"message":{"statusCode":400,"messages":"Missing genres Comedy,Fantasy"},"level":"error"}
+{"message":{"statusCode":400,"messages":"Missing genres Comedy,Fantasy"},"level":"error"}
+{"message":{"statusCode":400,"messages":"Missing genres Comedy,Fantasy"},"level":"error"}
+{"message":{},"level":"error"}
+{"message":{"statusCode":400,"messages":"Missing genres Fantasya"},"level":"error"}
+{"message":{"statusCode":400,"messages":"Missing genres Comedy Drama"},"level":"error"}
+{"message":{"statusCode":400,"messages":"Missing genres genres=Comedy,genres=Comedy&genres=Fantasy"},"level":"error"}
