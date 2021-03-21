@@ -2151,181 +2151,6 @@
     },
     {
       "id": 147,
-      "title": "Beetlejuice",
-      "year": "1988",
-      "runtime": "92",
-      "genres": [
-        "Comedy",
-        "Fantasy"
-      ],
-      "director": "Tim Burton",
-      "actors": "Alec Baldwin, Geena Davis, Annie McEnroe, Maurice Page",
-      "plot": "A couple of recently deceased ghosts contract the services of a \"bio-exorcist\" in order to remove the obnoxious new owners of their house.",
-      "posterUrl": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTUwODE3MDE0MV5BMl5BanBnXkFtZTgwNTk1MjI4MzE@._V1_SX300.jpg"
-    },
-    {
-      "id": 148,
-      "title": "Beetlejuice",
-      "year": "1988",
-      "runtime": "92",
-      "genres": [
-        "Comedy",
-        "Fantasy"
-      ],
-      "director": "Tim Burton",
-      "actors": "Alec Baldwin, Geena Davis, Annie McEnroe, Maurice Page",
-      "plot": "A couple of recently deceased ghosts contract the services of a \"bio-exorcist\" in order to remove the obnoxious new owners of their house.",
-      "posterUrl": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTUwODE3MDE0MV5BMl5BanBnXkFtZTgwNTk1MjI4MzE@._V1_SX300.jpg"
-    },
-    {
-      "id": 149,
-      "title": "Beetlejuice",
-      "year": "1988",
-      "runtime": "92",
-      "genres": [
-        "Comedy",
-        "Fantasya"
-      ],
-      "director": "Tim Burton",
-      "actors": "Alec Baldwin, Geena Davis, Annie McEnroe, Maurice Page",
-      "plot": "A couple of recently deceased ghosts contract the services of a \"bio-exorcist\" in order to remove the obnoxious new owners of their house.",
-      "posterUrl": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTUwODE3MDE0MV5BMl5BanBnXkFtZTgwNTk1MjI4MzE@._V1_SX300.jpg"
-    },
-    {
-      "id": 150,
-      "genres": [
-        "Comedy",
-        "Fantasya"
-      ]
-    },
-    {
-      "id": 151,
-      "genres": [
-        "Comedy",
-        "Fantasya"
-      ]
-    },
-    {
-      "id": 152,
-      "genres": [
-        "Comedy",
-        "Fantasya"
-      ]
-    },
-    {
-      "id": 153,
-      "genres": [
-        "Comedy",
-        "Fantasy"
-      ],
-      "title": "test"
-    },
-    {
-      "id": 154,
-      "genres": [
-        "Comedy",
-        "Fantasy"
-      ],
-      "title": "test",
-      "year": "2012"
-    },
-    {
-      "id": 155,
-      "genres": [
-        "Comedy",
-        "Fantasy"
-      ]
-    },
-    {
-      "id": 156,
-      "genres": [
-        "Comedy",
-        "Fantasy"
-      ],
-      "title": "abced",
-      "year": 2001,
-      "runtime": 12,
-      "director": "asd"
-    },
-    {
-      "id": 157,
-      "genres": [
-        "Comedy",
-        "Fantasy"
-      ],
-      "title": "abced",
-      "year": 2001,
-      "runtime": 12,
-      "director": "12"
-    },
-    {
-      "id": 158,
-      "genres": [
-        "Comedy",
-        "Fantasy"
-      ],
-      "title": "testmg",
-      "year": 2001,
-      "runtime": 12,
-      "director": "12"
-    },
-    {
-      "id": 159,
-      "genres": [
-        "Comedy",
-        "Fantasya"
-      ],
-      "title": "testmg",
-      "year": 2001,
-      "runtime": 12,
-      "director": "12"
-    },
-    {
-      "id": 160,
-      "genres": [
-        "Comedy",
-        "Fantasya"
-      ],
-      "title": "testmg",
-      "year": 2001,
-      "runtime": 12,
-      "director": "12"
-    },
-    {
-      "id": 161,
-      "genres": [
-        "Comedy",
-        "Fantasya"
-      ],
-      "title": "testmg",
-      "year": 2001,
-      "runtime": 12,
-      "director": "12"
-    },
-    {
-      "id": 162,
-      "genres": [
-        "Comedy",
-        "Fantasya"
-      ],
-      "title": "testmg",
-      "year": 2001,
-      "runtime": 12,
-      "director": "12"
-    },
-    {
-      "id": 163,
-      "genres": [
-        "Comedy",
-        "Fantasya"
-      ],
-      "title": "testmg",
-      "year": 2001,
-      "runtime": 12,
-      "director": "12"
-    },
-    {
-      "id": 164,
       "genres": [
         "Comedy",
         "Fantasy"
@@ -2336,7 +2161,29 @@
       "director": "12"
     },
     {
-      "id": 165,
+      "id": 148,
+      "genres": [
+        "Comedy",
+        "Fantasy"
+      ],
+      "title": "testmgi",
+      "year": 2001,
+      "runtime": 12,
+      "director": "12"
+    },
+    {
+      "id": 149,
+      "genres": [
+        "Comedy",
+        "Fantasy"
+      ],
+      "title": "testmgi",
+      "year": 2001,
+      "runtime": 12,
+      "director": "12"
+    },
+    {
+      "id": 150,
       "genres": [
         "Comedy",
         "Fantasy"

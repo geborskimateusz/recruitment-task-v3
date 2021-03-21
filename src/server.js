@@ -10,8 +10,6 @@ const { NotFoundError } = require('./errors/not-found-error');
 
 const swaggerDocument = YAML.load('swagger.yaml');
 
-const PORT = parseInt(process.env.PORT, 10) || 3000;
-
 const app = express();
 app.use(json());
 
@@ -27,6 +25,6 @@ app.all('*', () => {
 app.use(errorHandler);
 
 
-const start = () => app.listen(PORT, () => { console.log(`Listening on port ${PORT}`) });
+// const start = () => app.listen(PORT, () => { console.log(`Listening on port ${PORT}`) });
 
-module.exports = { start }
+module.exports = { app }

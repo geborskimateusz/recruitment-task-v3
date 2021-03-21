@@ -1,4 +1,4 @@
-const database = require('../db/database');
+const { database } = require('../db/database');
 
 // Model defines a base programming interface for interacting with the database.
 class Model {

@@ -8,7 +8,6 @@ async function queryValidator(req, res, next) {
             switch (query) {
                 case 'genres':
                     param = http.paramAsArray(param);
-                    console.log(param)
                     await validateGenres(param)
                     break;
             }

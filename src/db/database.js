@@ -4,11 +4,12 @@ const cache = require('./cache')
 
 const { DatabaseError } = require('../errors/database-error')
 
-const FILE_PATH = 'data/db.json';
+let FILE_PATH = 'data/db.json';
 
 function database(schema) {
 
     const find = async (filterParams) => {
+        console.log(FILE_PATH)
         switch (schema) {
             case 'movies':
 
@@ -122,4 +123,4 @@ function database(schema) {
     return { find, findAny, create }
 }
 
-module.exports = database;
+module.exports = { database, FILE_PATH };

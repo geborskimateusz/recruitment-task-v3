@@ -10,7 +10,7 @@ const validateGenres = async (genres) => {
         }
         return acc
     }, [])
-
+    
     if (validationArr.length !== 0) {
         throw new ValidationError(`Missing genres ${validationArr}`);
     }
