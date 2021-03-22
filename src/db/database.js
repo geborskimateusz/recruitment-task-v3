@@ -4,12 +4,10 @@ const cache = require('./cache')
 
 const { DatabaseError } = require('../errors/database-error')
 
-let FILE_PATH = 'data/db.json';
-
+let FILE_PATH = process.env.NODE_ENV === 'test' ? 'data/test_db.json' : 'data/db.json';
 function database(schema) {
 
     const find = async (filterParams) => {
-        console.log(FILE_PATH)
         switch (schema) {
             case 'movies':
 
