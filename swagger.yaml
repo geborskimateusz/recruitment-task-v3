@@ -34,7 +34,7 @@ paths:
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/Movie"
+              $ref: "#/definitions/ReturnMovie"
   /movies/findAll/:
     get:
       tags:
@@ -63,13 +63,36 @@ paths:
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/Movie"
+              $ref: "#/definitions/ReturnMovie"
         "400":
           description: "Invalid status value"
 definitions:
   Movie:
     type: "object"
     properties:
+      title:
+        type: "string"
+      year:
+        type: "number"
+      runtime:
+        type: "number"
+      genres:
+        type: "array"
+        items:
+          type: "string"
+      director:
+        type: "string"   
+      actors:
+        type: "string"  
+      plot:
+        type: "string"  
+      posterUrl:
+        type: "string"  
+  ReturnMovie:
+    type: "object"
+    properties:
+      id:
+        type: "number"
       title:
         type: "string"
       year:
