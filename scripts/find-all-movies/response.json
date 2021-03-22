@@ -1,16 +1,1 @@
-[
-    {
-        "id": 111,
-        "title": "Indochine",
-        "year": "1992",
-        "runtime": "159",
-        "genres": [
-            "Drama",
-            "Romance"
-        ],
-        "director": "Régis Wargnier",
-        "actors": "Catherine Deneuve, Vincent Perez, Linh Dan Pham, Jean Yanne",
-        "plot": "This story is set in 1930, at the time when French colonial rule in Indochina is ending. A widowed French woman who works in the rubber fields, raises a Vietnamese princess as if she was ...",
-        "posterUrl": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTM1MTkzNzA3NF5BMl5BanBnXkFtZTYwNTI2MzU5._V1_SX300.jpg"
-    }
-]
+[{"id":131,"title":"Ice Age","year":"2002","runtime":"81","genres":["Animation","Adventure","Comedy"],"director":"Chris Wedge, Carlos Saldanha","actors":"Ray Romano, John Leguizamo, Denis Leary, Goran Visnjic","plot":"Set during the Ice Age, a sabertooth tiger, a sloth, and a wooly mammoth find a lost human infant, and they try to return him to his tribe.","posterUrl":"https://images-na.ssl-images-amazon.com/images/M/MV5BMjEyNzI1ODA0MF5BMl5BanBnXkFtZTYwODIxODY3._V1_SX300.jpg"}]

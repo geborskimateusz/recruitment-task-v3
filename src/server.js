@@ -1,7 +1,7 @@
 const express = require('express');
 const { json } = require('body-parser');
 const swaggerUi = require("swagger-ui-express");
-const YAML = require("yamljs")
+const YAML = require("yamljs");
 
 const { findAllRouter } = require('./routes/findAll');
 const { createRouter } = require('./routes/create');
@@ -24,7 +24,4 @@ app.all('*', () => {
 
 app.use(errorHandler);
 
-
-// const start = () => app.listen(PORT, () => { console.log(`Listening on port ${PORT}`) });
-
-module.exports = { app }
+module.exports = { app };

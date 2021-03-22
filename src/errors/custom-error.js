@@ -5,10 +5,10 @@ class CustomError extends Error {
         this.messages = messages;
         this.serializeErrors = () => {
             return this.messages instanceof Array ?
-                this.messages.map(message => { return { message } }) :
-                [this.messages]
-        }
+                this.messages.map(message => { return { message }; }) :
+                [this.messages];
+        };
     }
 }
 
-module.exports = { CustomError } 
+module.exports = { CustomError }; 

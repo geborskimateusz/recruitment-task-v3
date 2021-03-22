@@ -1,7 +1,7 @@
 const express = require('express');
 
-const { movie } = require('../models/movie')
-const { queryValidator } = require('../middlewares/query-validator')
+const { movie } = require('../models/movie');
+const { queryValidator } = require('../middlewares/query-validator');
 const http = require('../util/http');
 
 const router = express.Router();
@@ -21,7 +21,7 @@ router.get('/api/movies/findAll/:runtime?/:genres?', queryValidator, async (req,
     } else {
         movies = [await movie.findAny()];
     }
-    res.status(200).json(movies)
-})
+    res.status(200).json(movies);
+});
 
-module.exports = { findAllRouter: router }
+module.exports = { findAllRouter: router };

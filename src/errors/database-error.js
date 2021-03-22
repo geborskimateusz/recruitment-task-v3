@@ -1,10 +1,10 @@
-const {CustomError} = require('./custom-error');
+const { CustomError } = require('./custom-error');
 
 class DatabaseError extends CustomError {
-    constructor(message) {
-      const statusCode = 500;
-      super(statusCode, message);
-    }
+  constructor(message) {
+    const statusCode = 500;
+    super(statusCode, message);
   }
-  
-  module.exports = {DatabaseError}
+}
+
+module.exports = { DatabaseError };

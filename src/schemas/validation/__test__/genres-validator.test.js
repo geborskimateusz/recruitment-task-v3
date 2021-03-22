@@ -5,8 +5,7 @@ it('Validation error should be thrown', async () => {
     let genres = [
         "Comedy",
         "FantasyInvalid"
-    ]
-
+    ];
 
     await expect(validateGenres(genres)).rejects.toThrow(ValidationError);
 });

@@ -1,4 +1,4 @@
-const { createMovie } = require('../../schemas/movie')
+const { createMovie } = require('../../schemas/movie');
 const { ValidationError } = require('../../errors/validation-error');
 
 const validateMovieSchema = async movie => {
@@ -7,14 +7,14 @@ const validateMovieSchema = async movie => {
     } catch (err) {
         let errorMessage;
         if (err.details) {
-            errorMessage = err.details.map(detail => { return detail.message })
+            errorMessage = err.details.map(detail => { return detail.message; });
         } else {
-            errorMessage = [err.messages]
+            errorMessage = [err.messages];
         }
 
-        throw new ValidationError(errorMessage)
+        throw new ValidationError(errorMessage);
 
     }
-}
+};
 
-module.exports = { validateMovieSchema }
+module.exports = { validateMovieSchema };

@@ -1,9 +1,9 @@
 const { CustomError } = require('../errors/custom-error');
-const { logger } = require('../logger')
+const { logger } = require('../logger');
 
 //Catch any thrown error and return serialized json response
 async function errorHandler(err, req, res, next) {
-  // logger.log({ message: err, level: 'error' });
+  logger.log({ message: err, level: 'error' });
   if (err instanceof CustomError) {
     return res.status(err.statusCode).send({ errors: err.serializeErrors() });
   }
@@ -13,4 +13,4 @@ async function errorHandler(err, req, res, next) {
   });
 }
 
-module.exports = { errorHandler }
+module.exports = { errorHandler };

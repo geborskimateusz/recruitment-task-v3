@@ -1,4 +1,4 @@
-const hash = require('../util/hash')
+const hash = require('../util/hash');
 
 // In memory structure that holds queries that has been requested.
 // It is used only when both genres and runtime query parameters were written.
@@ -13,7 +13,7 @@ let memcache = {
     "genres": [],
     "movies": {},
     "queries": {}
-}
+};
 
 function cache() {
 
@@ -22,12 +22,12 @@ function cache() {
     const readFromQueryCache = queryKey => {
         const movieIds = memcache['queries'][queryKey];
         return movieIds.map(id => memcache['movies'][id]);
-    }
+    };
 
     const setCache = (schema, result, filterParams) => {
         switch (schema) {
             case 'genres':
-                if(memcache['genres'].length == 0) {
+                if (memcache['genres'].length == 0) {
                     memcache['genres'] = result;
                 }
                 break;
@@ -38,14 +38,14 @@ function cache() {
                 });
 
                 if (filterParams) {
-                    const key = hash.toHash(filterParams)
+                    const key = hash.toHash(filterParams);
                     memcache['queries'][key] = ids;
                 }
                 break;
         }
-    }
+    };
 
-    return { getCache, readFromQueryCache, setCache }
+    return { getCache, readFromQueryCache, setCache };
 }
 
 module.exports = cache();

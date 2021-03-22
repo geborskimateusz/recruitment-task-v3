@@ -1,4 +1,4 @@
-const { Model } = require('../db/model')
+const { Model } = require('../db/model');
 
 class Movie extends Model {
     constructor() {
@@ -8,4 +8,5 @@ class Movie extends Model {
         this.create = async movie => await this.db.create(movie);
     }
 }
-module.exports = { movie: new Movie() } 
+
+module.exports = { movie: new Movie() }; 

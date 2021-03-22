@@ -1,5 +1,5 @@
 const cache = require('../cache');
-const hash = require('../../util/hash')
+const hash = require('../../util/hash');
 
 it('should write movie to cache than read data by query hash', () => {
     const schema = 'movies';
@@ -15,14 +15,14 @@ it('should write movie to cache than read data by query hash', () => {
             runtime: 12,
             director: "12"
         }
-    ]
+    ];
     const filter = {
         runtime: 120,
         genres: [
             "Comedy",
             "Fantasy"
         ]
-    }
+    };
 
     cache.setCache(schema, result, filter);
 
