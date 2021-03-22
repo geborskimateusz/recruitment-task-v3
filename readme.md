@@ -1,4 +1,5 @@
 [![CircleCI](https://circleci.com/gh/geborskimateusz/recruitment-task-v3.svg?style=svg)](https://circleci.com/gh/geborskimateusz/recruitment-task-v3.svg)
+[![Codecov Coverage](https://img.shields.io/codecov/c/github/geborskimateusz/recruitment-task-v3.svg?style=flat-square)](https://codecov.io/gh/geborskimateusz/recruitment-task-v3/)
 
 ## The Software House - Node.js Developer recruitment task
 
