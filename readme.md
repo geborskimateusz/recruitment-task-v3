@@ -4,7 +4,16 @@
 ## INFO:
 - API documentation is avilable under endpoint [**/api/docs**](localhost:3000/api/docs)
 - Request examples are avilable under directory [./scripts](./scripts) 
+- Optionally you can build docker image to run code, example: 
+<br>
+```
+docker build -t geborskimateusz/recruitmenttask .
+docker run -p 3000:3000 -d geborskimateusz/recruitmenttask
+```
+<br>
+<br>
 
+# Task:
 ## The Software House - Node.js Developer recruitment task
 
 Hey there!
