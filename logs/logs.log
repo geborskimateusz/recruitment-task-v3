@@ -133,3 +133,13 @@
 {"message":{"statusCode":400,"messages":[null]},"level":"error"}
 {"message":{"statusCode":400,"messages":["Missing genres InvalidGenre"]},"level":"error"}
 {"message":{"statusCode":400,"messages":["\"title\" is required"]},"level":"error"}
+{"message":{"statusCode":400,"messages":["\"title\" is required"]},"level":"error"}
+{"message":{"statusCode":400,"messages":["\"year\" is required"]},"level":"error"}
+{"message":{"statusCode":400,"messages":["\"year\" must be a number"]},"level":"error"}
+{"message":{"statusCode":400,"messages":["\"runtime\" is required"]},"level":"error"}
+{"message":{"statusCode":400,"messages":["\"runtime\" must be a number"]},"level":"error"}
+{"message":{"statusCode":400,"messages":["\"director\" is required"]},"level":"error"}
+{"message":{"statusCode":400,"messages":["\"director\" must be a string"]},"level":"error"}
+{"message":{"statusCode":400,"messages":[null]},"level":"error"}
+{"message":{"statusCode":400,"messages":["Missing genres InvalidGenre"]},"level":"error"}
+{"message":{"statusCode":400,"messages":["\"title\" is required"]},"level":"error"}
