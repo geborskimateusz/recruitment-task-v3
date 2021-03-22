@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/geborskimateusz/recruitment-task-v3.svg?style=svg)](https://circleci.com/gh/geborskimateusz/recruitment-task-v3.svg)
+
 ## The Software House - Node.js Developer recruitment task
 
 Hey there!
