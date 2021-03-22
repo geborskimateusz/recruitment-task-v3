@@ -2,7 +2,7 @@
 [![Codecov Coverage](https://img.shields.io/codecov/c/github/geborskimateusz/recruitment-task-v3.svg?style=flat-square)](https://codecov.io/gh/geborskimateusz/recruitment-task-v3/)
 
 ## INFO:
-- API documentation is avilable under endpoint [/api/docs](localhost:3000/api/docs)
+- API documentation is avilable under endpoint [**/api/docs**](localhost:3000/api/docs)
 - Request examples are avilable under directory [./scripts](./scripts) 
 
 ## The Software House - Node.js Developer recruitment task
