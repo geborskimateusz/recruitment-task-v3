@@ -10,11 +10,11 @@ router.get('/api/movies/findAll/:runtime?/:genres?', queryValidator, async (req,
     let movies = [];
     if (http.containsParams(req.query)) {
         let params = {};
-        if (req.query.runtime) {
+        if ('runtime' in req.query) {
             params["runtime"] = req.query.runtime;
         }
 
-        if (req.query.genres) {
+        if ('genres' in req.query) {
             params["genres"] = http.paramAsArray(req.query.genres);
         }
         movies = await movie.find(params);
