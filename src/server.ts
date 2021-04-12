@@ -24,4 +24,4 @@ app.all('*', () => {
 
 app.use(errorHandler);
 
-module.exports = { app };
+export { app };

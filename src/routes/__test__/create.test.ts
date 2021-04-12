@@ -1,5 +1,5 @@
 const request = require('supertest');
-const { app } = require('../../server');
+import { app } from '../../server';
 const { assertErrorMessage } = require('../../test/custom-assertions');
 
 const postMovie = async (requestBody, statusCode) => {

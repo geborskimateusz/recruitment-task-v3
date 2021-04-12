@@ -1,5 +1,5 @@
 const request = require('supertest');
-const { app } = require('../../server');
+import { app } from '../../server';
 const { assertGenres, assertRuntime } = require('../../test/custom-assertions');
 
 it('returns different random movies when query paramters not supplied', async () => {

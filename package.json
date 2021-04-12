@@ -4,7 +4,7 @@
   "description": "The Software House - Node.js Developer recruitment task",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "ts-node-dev src/index.ts",
     "test": "jest --no-cache --coverage"
   },
   "jest": {
@@ -26,7 +26,9 @@
     "swagger-jsdoc": "6.0.0",
     "swagger-ui-express": "^4.1.6",
     "winston": "^3.3.3",
-    "yamljs": "^0.3.0"
+    "yamljs": "^0.3.0",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.8.3"
   },
   "devDependencies": {
     "codecov": "^3.8.1"
