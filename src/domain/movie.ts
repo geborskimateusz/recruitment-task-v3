@@ -3,7 +3,7 @@ interface Movie {
   title: string;
   year: number;
   runtime: number;
-  director: number;
+  director: string;
 }
 
 export { Movie };
